@@ -25,6 +25,7 @@ app.get('/users/:id', function (req, res) {
 });
 
 app.post('/login', function (req, res) {
+  // Typically passwords are encrypted using something like bcrypt before sending to database
   const username = req.body.username;
   const password = req.body.password;
 
@@ -32,6 +33,7 @@ app.post('/login', function (req, res) {
   const mockPassword = 'superSecret';
 
   if (username === mockUsername && password === mockPassword) {
+    // In practice, use JSON web token sign method here to make an encrypted token
     res.json({
       success: true,
       message: 'password and username match!',
